@@ -1,0 +1,10 @@
+http://localhost:9090
+GET /userid
+POST /create
+{
+  "name": "teste",
+  "email": "01@gmail.com",
+  "password": "TESTETET",
+  "age": 32
+}
+ 
