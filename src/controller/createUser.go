@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"api/src/configuration/rest_err/validation"
+	"api/src/configuration/validation"
 	"api/src/controller/model/request"
 	"api/src/controller/model/response"
 	"fmt"
