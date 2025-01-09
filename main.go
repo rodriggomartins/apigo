@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"api/src/configuration/logger"
 	"api/src/routes"
 
 	"github.com/gin-gonic/gin"
@@ -11,6 +12,7 @@ import (
 )
 
 func main() {
+	logger.Info("Sobre a aplicacao")
 	err := godotenv.Load()
 	if err != nil {
 		fmt.Println("Error:", err)
