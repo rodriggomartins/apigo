@@ -14,6 +14,6 @@ func (ud *userDomainService) CreateUser(
 ) *rest_err.RestErr {
 	logger.Info("create user model", zap.String("journey", "createUser"))
 	userDomain.EncryptPassword()
-	fmt.Println(ud)
+	fmt.Println(userDomain.GetPassword())
 	return nil
 }

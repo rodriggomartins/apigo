@@ -4,7 +4,7 @@ POST /create
 {
   "name": "teste",
   "email": "01@gmail.com",
-  "password": "TESTETET",
+  "password": "Test@123",
   "age": 32
 }
  

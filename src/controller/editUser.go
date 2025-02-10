@@ -2,4 +2,4 @@ package controller
 
 import "github.com/gin-gonic/gin"
 
-func EditUserById(c *gin.Context) {}
+func (uc *userControllerInterface) EditUserById(c *gin.Context) {}

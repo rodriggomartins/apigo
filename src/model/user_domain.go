@@ -10,16 +10,8 @@ type UserDomainInterface interface {
 	GetPassword() string
 	GetName() string
 	GetAge() int8
-	EncryptPassword()
-}
 
-func NewUserDomain(
-	email, password, name string,
-	age int8,
-) UserDomainInterface {
-	return &userDomain{
-		email, password, name, age,
-	}
+	EncryptPassword()
 }
 
 type userDomain struct {
@@ -27,6 +19,12 @@ type userDomain struct {
 	password string
 	name     string
 	age      int8
+}
+
+func NewUserDomain(email, password, name string, age int8) UserDomainInterface {
+	return &userDomain{
+		email, password, name, age,
+	}
 }
 
 func (ud *userDomain) GetEmail() string {
@@ -42,7 +40,7 @@ func (ud *userDomain) GetAge() int8 {
 	return ud.age
 }
 
-func (ud *userDomain) EncriptyPassword() {
+func (ud *userDomain) EncryptPassword() {
 	hash := md5.New()
 	defer hash.Reset()
 	hash.Write([]byte(ud.password))

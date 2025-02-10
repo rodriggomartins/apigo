@@ -5,7 +5,7 @@ import (
 	"api/src/configuration/validation"
 	"api/src/controller/model/request"
 	"api/src/model"
-	"api/src/model/service"
+	"api/src/view"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -16,7 +16,7 @@ var (
 	UserDomainInterface model.UserDomainInterface
 )
 
-func CreateUser(c *gin.Context) {
+func (uc *userControllerInterface) CreateUser(c *gin.Context) {
 	logger.Info("Init Createuser Controller",
 		zap.String("journey", "createUser"),
 	)
@@ -33,9 +33,7 @@ func CreateUser(c *gin.Context) {
 
 	domain := model.NewUserDomain(userRequest.Name, userRequest.Password, userRequest.Name, userRequest.Age)
 
-	service := service.NewUserDomainService()
-
-	if err := service.CreateUser(domain); err != nil {
+	if err := uc.service.CreateUser(domain); err != nil {
 		c.JSON(err.Code, err)
 		return
 	}
@@ -44,6 +42,8 @@ func CreateUser(c *gin.Context) {
 		zap.String("journey", "createUser"),
 	)
 
-	c.String(http.StatusOK, "")
+	c.JSON(http.StatusOK, view.ConvertDomain(
+		domain,
+	))
 
 }
